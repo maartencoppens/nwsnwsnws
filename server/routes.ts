@@ -30,7 +30,7 @@ router.post("/news", (req: Request, res: Response): void => {
     }
     const addNewsVariable = addNews(addNewsObject)  
     console.log(addNewsVariable);
-    res.render("/",)
+    res.redirect("/")
 })
 
 export default router;
