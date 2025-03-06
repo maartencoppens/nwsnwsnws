@@ -3,6 +3,7 @@ import path from "path";
 import expressLayouts from "express-ejs-layouts";
 import routes from "./routes";
 
+
 const app: Application = express();
 const PORT: number = parseInt(<string>process.env.PORT) || 3000;
 

@@ -1,6 +1,13 @@
+<h1><%= title %></h1>
+
+<% if( news.length === 0 ) { %>
+<p>Er is geen nieuws beschikbaar</p>
+<% } else { %>
 <h2>News articles:</h2>
 <% news.forEach(item => { %>
-    <a href="/news/<%=item.slug%>"><%= item.title %> <br></a>
+<a href="/news/<%=item.slug%>"><%= item.title %> <br /></a>
 <% }) %>
 
 <a href="/add" class="add-news-button">Add your own news!</a>
+
+<% } %>
