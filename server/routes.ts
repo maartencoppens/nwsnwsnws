@@ -1,9 +1,11 @@
 import express, { Request, Response, Router } from "express";
-import { News, getAllNews, getNewsBySlug, insertNews } from "./services/newsService";
+import { News, getAllNews, getNewsBySlug, insertNews, removeNews } from "./services/newsService";
 
 
 
 const router: Router = express.Router();
+
+
 
 // Homepagina
 router.get("/", async (req: Request, res: Response) => {
@@ -15,6 +17,7 @@ router.get("/", async (req: Request, res: Response) => {
 router.get("/news/:slug", async (req: Request, res: Response) => {
     const slug: string = req.params.slug;
     const news: News = await getNewsBySlug(slug);
+ 
     res.render("news-detail", { title: "News Article" , news});
 })
 
@@ -30,10 +33,10 @@ router.post("/news", (req: Request, res: Response): void => {
     //     "date": req.body.articleDate?.trim()
     // }
     const newNewsTitle: string = req.body.articleTitle?.trim();
-    const newNewsSlug: string = req.body.articleSlug?.trim();
+    // const newNewsSlug: string = req.body.articleSlug?.trim();
     const newNewsContent: string = req.body.articleContent?.trim();
 
-    const addNewsVariable = insertNews(newNewsTitle, newNewsSlug, newNewsContent);  
+    const addNewsVariable = insertNews(newNewsTitle, newNewsContent);  
     console.log(addNewsVariable);
     res.redirect("/")
 })

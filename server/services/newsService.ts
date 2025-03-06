@@ -32,13 +32,26 @@ export async function getNewsBySlug(slug: string): Promise<News> {
   }
 }
 
-export async function insertNews(title: string, slug: string, content:string ): Promise<News[]> {
+export async function insertNews(title: string, content:string ): Promise<News[]> {
   try {
+    const slug:string = title.toLowerCase().replace(/\s/g, "-");
+
     const data: News[] = await sql`INSERT INTO news (title, slug, content)
                           VALUES (${title}, ${slug}, ${content});`;
     return data;
   } catch (error) {
     console.error("Error inserting news:", error);
     throw new Error("Could not insert news: " + error);
+  }
+}
+
+
+export async function removeNews(slug: string): Promise<News[]> {
+  try {
+    const data: News[] = await sql`DELETE FROM news WHERE slug = ${slug};`;
+    return data;
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    throw new Error("Could not fetch news: " + error);
   }
 }
