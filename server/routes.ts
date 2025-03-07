@@ -13,6 +13,13 @@ router.get("/", async (req: Request, res: Response) => {
     res.render("news", { news, title: "Recent nieuws" });
 });
   
+router.get("/news/delete/:slug", async (req: Request, res: Response) => {
+    const slug: string = req.params.slug;
+     await removeNews(slug);
+ 
+     res.redirect("/")
+
+})
 
 router.get("/news/:slug", async (req: Request, res: Response) => {
     const slug: string = req.params.slug;
