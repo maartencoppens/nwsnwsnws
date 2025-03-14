@@ -1,0 +1,13 @@
+<% if( comments.length === 0 ) { %>
+<p>Er zijn geen comments beschikbaar</p>
+<% } else { %>
+<h2>Comments:</h2>
+<% comments.forEach(comment => { %>
+<p><%= comment.author %> <br /></p>
+<p><%= comment.comment %> <br /></p>
+
+<% }) %>
+
+<a href="/">Home</a>
+
+<% } %>

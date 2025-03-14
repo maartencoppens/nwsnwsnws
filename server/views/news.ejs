@@ -7,7 +7,8 @@
 <% news.forEach(item => { %>
 <a href="/news/<%=item.slug%>"><%= item.title %>  <br /></a>
 <% }) %>
-
+<div class="button-container">
+<a href="/comments" class="comments">Check de comments</a>
 <a href="/add" class="add-news-button">Add your own news!</a>
-
+</div>
 <% } %>

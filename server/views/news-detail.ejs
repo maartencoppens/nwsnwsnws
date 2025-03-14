@@ -1,6 +1,24 @@
 <h2><%= news.title %></h2>
 <p><%= news.content %></p>
 <p><%= news.date %></p>
+<h2>Comments:</h2>
+<% comments.forEach(comment => { %>
+    <ul>
+    <li><%= comment.author %> </li>
+    <%= comment.comment %> <br>
+    <%= comment.created_at %>
+</ul>
+    <% }) %>
+
+<form action="/add-comment" method="post">
+    <input type="hidden" name="news_id" value="<%= news.id %>">
+    <label>Profile Name</label>
+    <input type="text" name="commentProfileName"><br>
+    <label>Article Content</label>
+    <textarea type="text" name="commentContent"></textarea><br>
+    <button type="submit">Submit</button>
+</form>
+
 <a href="/news/delete/<%= news.slug %>">Delete</a><br>
 <a href="/">Terug</a>
 
